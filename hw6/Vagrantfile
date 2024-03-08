@@ -1,0 +1,12 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/bionic64"
+  config.vm.network "public_network"
+  config.vm.provision "shell", inline: <<-SHELL
+	sudo useradd priima
+sudo usermod -aG sudo priima
+    sudo apt update
+    sudo apt install nginx
+    sudo sed -i 's/80/82/' /etc/nginx/sites-available/default
+    sudo systemctl restart nginx
+  SHELL
+end
