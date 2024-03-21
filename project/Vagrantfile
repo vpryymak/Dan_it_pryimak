@@ -1,0 +1,21 @@
+Vagrant.configure("2") do |config|
+  config.vm.define "DB_VM" do |db|
+    db.vm.box = "ubuntu/bionic64"
+    db.vm.network "private_network", ip: "192.168.50.10"
+    db.vm.hostname = "db-vm"
+    db.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+    end
+    db.vm.provision "shell", path: "provision_scripts/db_provision.sh"
+  end
+
+  config.vm.define "APP_VM" do |app|
+    app.vm.box = "ubuntu/bionic64"
+    app.vm.network "private_network", ip: "192.168.50.11"
+    app.vm.hostname = "app-vm"
+    app.vm.provider "virtualbox" do |vb|
+      vb.memory = "2048"
+    end
+    app.vm.provision "shell", path: "provision_scripts/app_provision.sh"
+  end
+end
