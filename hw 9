@@ -1,0 +1,34 @@
+class Alphabet
+    def __init__(self, lang, letters)
+        self.lang = lang
+        self.letters = letters
+
+    def print_letters(self)
+        print(Alphabet, self.letters)
+
+    def letters_num(self)
+        return len(self.letters)
+
+
+class EngAlphabet(Alphabet)
+    _letters_num = None
+
+    def __init__(self)
+        super().__init__(En, abcdefghijklmnopqrstuvwxyz)
+        EngAlphabet._letters_num = len(self.letters)
+
+    def is_en_letter(self, letter)
+        return letter.lower() in self.letters
+
+    @staticmethod
+    def example()
+        return The quick brown fox jumps over the lazy dog.
+
+
+if __name__ == __main__
+    eng_alphabet = EngAlphabet()
+    eng_alphabet.print_letters()
+    print(Number of letters, eng_alphabet.letters_num())
+    print(Is 'F' in English alphabet, eng_alphabet.is_en_letter('F'))
+    print(Is 'Щ' in English alphabet, eng_alphabet.is_en_letter('Щ'))
+    print(Example text in English, EngAlphabet.example())
