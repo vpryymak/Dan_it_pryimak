@@ -1,0 +1,88 @@
+[
+    [
+        "id",
+        "first_name",
+        "last_name",
+        "age"
+    ],
+    [
+        "1",
+        "Vlad",
+        "priima",
+        "30"
+    ],
+    [
+        "2",
+        "andry",
+        "mokl",
+        "23"
+    ],
+    [
+        "3",
+        "alice",
+        "schvost",
+        "44"
+    ]
+]
+{
+    "age": 20,
+    "first_name": "John",
+    "id": 5,
+    "last_name": "Doe"
+}
+{
+    "age": 22,
+    "first_name": "Jane",
+    "id": 6,
+    "last_name": "Doe"
+}
+{
+    "age": 21,
+    "first_name": "Jim",
+    "id": 7,
+    "last_name": "Smith"
+}
+[
+    [
+        "id",
+        "first_name",
+        "last_name",
+        "age"
+    ],
+    [
+        "1",
+        "Vlad",
+        "priima",
+        "30"
+    ],
+    [
+        "2",
+        "andry",
+        "mokl",
+        "23"
+    ],
+    [
+        "3",
+        "alice",
+        "schvost",
+        "44"
+    ],
+    [
+        "5",
+        "John",
+        "Doe",
+        "20"
+    ],
+    [
+        "6",
+        "Jane",
+        "Doe",
+        "22"
+    ],
+    [
+        "7",
+        "Jim",
+        "Smith",
+        "21"
+    ]
+]
