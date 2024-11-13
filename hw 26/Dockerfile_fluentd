@@ -1,0 +1,9 @@
+FROM fluent/fluentd:v1.17-1
+USER root
+RUN apk add --no-cache --update --virtual .build-deps \
+    sudo build-base ruby-dev
+RUN apk add --no-cache curl
+RUN fluent-gem install fluent-plugin-elasticsearch --no-document
+RUN apk del .build-deps && \
+    rm -rf /var/cache/apk/*
+USER fluent
