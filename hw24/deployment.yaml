@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random-string-generator
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: random-string-generator
+  template:
+    metadata:
+      labels:
+        app: random-string-generator
+    spec:
+      containers:
+      - name: random-string-generator
+        image: priima/random-string-generator:latest
+        ports:
+        - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: random-string-generator-service
+spec:
+  selector:
+    app: random-string-generator
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
