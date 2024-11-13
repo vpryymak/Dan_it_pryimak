@@ -1,0 +1,40 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  receiver: 'telegram-notifications'
+
+receivers:
+  - name: 'telegram-notifications'
+    telegram_configs:
+      - send_resolved: true
+        api_url: 'https://api.telegram.org'
+        chat_id: '<6988927075>'
+        token: '<7947880883:AAFAX6jjZP9d5bAaeWnU8ES4pRUvPJLW3ok>'
+
+alerting:
+  alert_relabel_configs: []
+
+groups:
+  - name: example
+    rules:
+      - alert: HighDiskUsage
+        expr: node_filesystem_free_bytes / node_filesystem_size_bytes * 100 < 15
+        for: 5m
+        annotations:
+          summary: "Low disk space on {{ $labels.instance }}"
+          description: "Disk usage is at {{ $value }}%"
+      
+      - alert: HighCpuUsage
+        expr: 100 - avg(irate(node_cpu_seconds_total{mode="idle"}[1m])) by (instance) * 100 > 80
+        for: 5m
+        annotations:
+          summary: "High CPU usage on {{ $labels.instance }}"
+          description: "CPU usage is at {{ $value }}%"
+
+      - alert: TargetDown
+        expr: up == 0
+        for: 5m
+        annotations:
+          summary: "Prometheus target down"
+          description: "Target {{ $labels.job }} is down"
